@@ -1,0 +1,13 @@
+<form [formGroup]="formAddEdit">
+    <div class="mb-3">
+        <label class="form-label">publisherID</label>
+        <input class="form-control" formControlName="publisherID">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">publisherName</label>
+        <input class="form-control" formControlName="publisherName" >
+      </div>
+      <div class="col-auto">
+        <button type="submit" (click)="simpan()" class="btn btn-primary mb-3">Simpan</button>
+      </div>
+    </form>
