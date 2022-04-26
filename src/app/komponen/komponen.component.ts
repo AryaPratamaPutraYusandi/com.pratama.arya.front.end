@@ -1,11 +1,8 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fromEventPattern } from 'rxjs';
 import { Publisher } from '../model/publisher';
 import { MasterService } from '../services/master.service';
-
 
 @Component({
   selector: 'app-komponen',
@@ -15,19 +12,21 @@ import { MasterService } from '../services/master.service';
 })
 export class KomponenComponent implements OnInit {
  id! : string;
-  formAddEdit!:FormGroup;
+  formAddEdit! : FormGroup;
   
   constructor(private formaBuild :FormBuilder,
     private marterService: MasterService,
     private ruter:Router,
     private activateRouter: ActivatedRoute) { 
     this.formAddEdit = this.formaBuild.group({
-      'publisherID' : [null],
-      'publisherName' : [null],
+      'publisherID' :  new FormControl (null, [Validators.required, Validators.min (10000)]) ,
+      'publisherName' :  new FormControl (null, [Validators.required, Validators.minLength (7)]) ,
     })
   }
 
   simpan(): void {
+
+    if(this.formAddEdit.valid){
     let publish =new Publisher();
     publish.publisherId = this.formAddEdit.controls["publisherID"].value;
     publish.publisherName = this.formAddEdit.controls["publisherName"].value;
@@ -41,7 +40,9 @@ export class KomponenComponent implements OnInit {
     alert(salah.error)
   }
 })
-  
+}else{
+  alert('form wajib di lengkapi!')
+}
 }
 
 

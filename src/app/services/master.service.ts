@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { env } from 'process';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Publisher } from '../model/publisher';
+import { Author } from '../model/author';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,18 @@ getPublisher(id: number): Observable<any>{
   return this.http.get(environment.baseUrl+ '/editpublisher/'+id)
   .pipe(map(data=>data));
 }
-listPublisher(): Observable<any>{
-  return this.http.get(environment.baseUrl+'/autor')
+listauthor(): Observable<any>{
+  return this.http.get(environment.baseUrl+'/author',)
   .pipe(map(data=>data));
 }
+
+saveAuthor(author: Author): Observable<any>{
+    return this.http.post(environment.baseUrl+ '/simpanauthor',author)
+    .pipe(map(data=>data));
+
+  }
+  getAuthor(id: number):Observable<any>{
+    return this.http.get(environment.baseUrl+'/editauthor'+id)
+    .pipe(map(data=>data));
+  }
 }

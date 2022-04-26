@@ -1,11 +1,22 @@
 <form [formGroup]="formAddEdit">
     <div class="mb-3">
         <label class="form-label">AuthorID</label>
-        <input class="form-control" formControlName="AuthorID">
-      </div>
+        <input class="form-control" formControlName="authorId">
+        <span class="error-block" 
+        *ngIf="!formAddEdit.get('authorId')?.valid && 
+        formAddEdit.get('authorId')?.touched">
+        <span *ngIf="formAddEdit.get('authorId')?.errors?.['min']" >tidak boleh kurang dari 10000 </span>
+        <span *ngIf="formAddEdit.get('authorId')?.errors?.['required']" >wajib di isi </span>
+       </span>
+       </div>
       <div class="mb-3">
         <label class="form-label">AuthorName</label>
-        <input class="form-control" formControlName="publisherName" >
+        <input class="form-control" formControlName="authorName">
+        <span class="error-block" *ngIf="!formAddEdit.get('authorName')?.valid &&
+         formAddEdit.get('authorName')?.touched">
+        <span *ngIf="formAddEdit.get('authorName')?.errors?.['minlength']" >tidak boleh kurang dari 5 karakter </span>
+        <span *ngIf="formAddEdit.get('authorName')?.errors?.['required']" >wajib di isi </span>
+      </span>
       </div>
       <div class="col-auto">
         <button type="submit" (click)="simpan()" class="btn btn-primary mb-3">Simpan</button>

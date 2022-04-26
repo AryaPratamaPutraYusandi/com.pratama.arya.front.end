@@ -1,0 +1,16 @@
+<table class= "table table-bordered table -respon">
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <tr *ngFor="let lp of daftarAuthor">
+            <td>{{lp.authorId}}</td>
+            <td>{{lp.authorName}}</td>
+            <td><a routerLink="/author/{{lp.authorId}}">edit</a></td>
+        </tr>
+    </tbody>
+</table>

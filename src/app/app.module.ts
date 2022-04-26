@@ -10,6 +10,7 @@ import { KomponenzComponent } from './komponenz/komponenz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListpublisherComponent } from './master/listpublisher/listpublisher.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListauthorComponent } from './listauthor/listauthor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     KomponenComponent,
     KomponenzComponent,
-    ListpublisherComponent
+    ListpublisherComponent,
+    ListauthorComponent
   ],
   imports: [
     BrowserModule,
